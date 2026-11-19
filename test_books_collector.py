@@ -1,13 +1,11 @@
+import pytest
+
 from main import BooksCollector
 
-import pytest
 # класс TestBooksCollector объединяет набор тестов, которыми мы покрываем наше приложение BooksCollector
 # обязательно указывать префикс Test
 class TestBooksCollector:
 
-    @pytest.fixture
-    def collector(self):
-        return BooksCollector()
     # пример теста:
     # обязательно указывать префикс test_
     # дальше идет название метода, который тестируем add_new_book_
@@ -83,3 +81,13 @@ class TestBooksCollector:
         collector.add_book_in_favorites('Одиссея')
         collector.delete_book_from_favorites('Одиссея')
         assert collector.get_list_of_favorites_books() == []
+
+    def test_get_books_genre_returns_all_books_with_genres(self, collector):
+        collector.add_new_book('Женщина в белом')
+        collector.set_book_genre('Женщина в белом', 'Детективы')
+        collector.add_new_book('Двенадцать стульев')
+        collector.set_book_genre('Двенадцать стульев', 'Комедии')
+        assert collector.get_books_genre() == {
+            'Женщина в белом': 'Детективы',
+            'Двенадцать стульев': 'Комедии',
+        }

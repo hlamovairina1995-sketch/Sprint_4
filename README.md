@@ -10,3 +10,4 @@
 9. test_get_list_of_favorites_books_empty_true - Изначально список избранного пуст
 10. test_add_book_in_favorites_success_true - Книгу можно добавить в избранное
 11. test_delete_book_from_favorites_success_true - Книгу можно удалить из избранного
+12. test_get_books_genre_returns_all_books_with_genres - Получение всех добавленных книг с жанрами
